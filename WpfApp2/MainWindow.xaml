@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid Margin="10">
+        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <DockPanel Margin="10">
+        <StackPanel DockPanel.Dock="Right" Margin="10,0,0,0">
+            <Button Name="btnAddUser" Click="btnAddUser_Click">Add user</Button>
+            <Button Name="btnChangeUser" Click="btnChangeUser_Click" Margin="0,5" IsEnabled="False">Change user</Button>
+            <Button Name="btnDeleteUser" IsEnabled="False" Click="btnDeleteUser_Click">Delete user</Button>
+            <Button Name="btnExit" Height="30" VerticalAlignment="Bottom" Margin="0,5" Click="btnExit_Click">Exit</Button>
+        </StackPanel>
         <DataGrid Name="dgSimple" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Назва" Binding="{Binding Name}" />
@@ -45,5 +51,5 @@
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>
         </DataGrid>
-    </Grid>
+    </DockPanel>
 </Window>

@@ -24,13 +24,33 @@ namespace WpfApp2
         public MainWindow()
         {
             InitializeComponent();
-            List<User> users = new List<User>();
-            users.Add(new User() { Id = 1, Name = "John Doe", Birthday = new DateTime(1971, 7, 23) });
-            users.Add(new User() { Id = 2, Name = "Jane Doe", Birthday = new DateTime(1974, 1, 17),
+            List<User> userList = new List<User>();
+            userList.Add(new User() { Id = 1, Name = "John Doe", Birthday = new DateTime(1971, 7, 23) });
+            userList.Add(new User() { Id = 2, Name = "Jane Doe", Birthday = new DateTime(1974, 1, 17),
                 ImageUrl = "https://vasuluna2x.files.wordpress.com/2012/04/yak-zminiti-oval-oblichchya1.jpg" });
-            users.Add(new User() { Id = 3, Name = "Sammy Doe", Birthday = new DateTime(1991, 9, 2) });
+            userList.Add(new User() { Id = 3, Name = "Sammy Doe", Birthday = new DateTime(1991, 9, 2) });
 
-            dgSimple.ItemsSource = users;
+            dgSimple.ItemsSource = userList;
+        }
+
+        private void btnAddUser_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnChangeUser_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDeleteUser_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 
@@ -39,22 +59,6 @@ namespace WpfApp2
         public int Id { get; set; }
 
         private string name;
-        private DateTime birthday;
-
-        public DateTime Birthday
-        {
-            get { return this.birthday; }
-            set
-            {
-                if (this.birthday != value)
-                {
-                    this.birthday = value;
-                    this.NotifyPropertyChanged("Birthday");
-                }
-            }
-        }
-        public string ImageUrl { get; set; }
-
         public string Name
         {
             get { return this.name; }
@@ -75,5 +79,21 @@ namespace WpfApp2
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
+
+        private DateTime birthday;
+        public DateTime Birthday
+        {
+            get { return this.birthday; }
+            set
+            {
+                if (this.birthday != value)
+                {
+                    this.birthday = value;
+                    this.NotifyPropertyChanged("Birthday");
+                }
+            }
+        }
+
+        public string ImageUrl { get; set; }
     }
 }
