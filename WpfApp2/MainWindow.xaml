@@ -13,9 +13,9 @@
             <Button Name="btnDeleteUser" IsEnabled="False" Click="btnDeleteUser_Click">Delete user</Button>
             <Button Name="btnExit" Height="30" VerticalAlignment="Bottom" Margin="0,5" Click="btnExit_Click">Exit</Button>
         </StackPanel>
-        <DataGrid Name="dgSimple" AutoGenerateColumns="False">
+        <DataGrid Name="DG" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Назва" Binding="{Binding Name}" />
+                <DataGridTextColumn Header="Ім'я" Binding="{Binding Name}" />
                 <DataGridTemplateColumn Header="Дата Народження">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

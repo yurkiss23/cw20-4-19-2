@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp2.Entities;
 
 namespace WpfApp2
 {
@@ -21,16 +22,38 @@ namespace WpfApp2
     /// </summary>
     public partial class MainWindow : Window
     {
+        private EFContext _context;
+        public List<User> userList = null;
         public MainWindow()
         {
             InitializeComponent();
-            List<User> userList = new List<User>();
-            userList.Add(new User() { Id = 1, Name = "John Doe", Birthday = new DateTime(1971, 7, 23) });
-            userList.Add(new User() { Id = 2, Name = "Jane Doe", Birthday = new DateTime(1974, 1, 17),
-                ImageUrl = "https://vasuluna2x.files.wordpress.com/2012/04/yak-zminiti-oval-oblichchya1.jpg" });
-            userList.Add(new User() { Id = 3, Name = "Sammy Doe", Birthday = new DateTime(1991, 9, 2) });
+            _context = new EFContext();
+            //userList = new List<User>(_context.Users.Select(u => new User()
+            //{
+            //    Id = u.Id,
+            //    Name = u.Name,
+            //    Birthday = u.Birthday,
+            //    ImageUrl = u.ImageUrl
+            //}));
+            //userList.Add(new User() { Id = 1, Name = "John Doe", Birthday = new DateTime(1971, 7, 23) });
+            //userList.Add(new User() { Id = 2, Name = "Jane Doe", Birthday = new DateTime(1974, 1, 17),
+            //    ImageUrl = "https://vasuluna2x.files.wordpress.com/2012/04/yak-zminiti-oval-oblichchya1.jpg" });
+            //userList.Add(new User() { Id = 3, Name = "Sammy Doe", Birthday = new DateTime(1991, 9, 2) });
 
-            dgSimple.ItemsSource = userList;
+            //DG.ItemsSource = userList;
+            DG_Load();
+        }
+        public void DG_Load()
+        {
+            userList = new List<User>(_context.Users.Select(u => new User()
+            {
+                Id = u.Id,
+                Name = u.Name,
+                Birthday = u.Birthday,
+                ImageUrl = u.ImageUrl
+            }));
+
+            DG.ItemsSource = userList;
         }
 
         private void btnAddUser_Click(object sender, RoutedEventArgs e)
