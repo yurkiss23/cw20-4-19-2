@@ -73,7 +73,22 @@ namespace WpfApp2
 
         private void btnChangeUser_Click(object sender, RoutedEventArgs e)
         {
-
+            EFUser cng = null;
+            if (DG.SelectedItem != null)
+            {
+                EFUser select = DG.SelectedItem as User;
+                AddUserWindow cnguser = new AddUserWindow();
+                cnguser.txtName.Text = select.Name;
+                cnguser.dpbirthday.SelectedDate = select.Birthday;
+                cnguser.txtImg.Text = select.ImageUrl;
+                cnguser.ShowDialog();
+                cng = _context.Users.Where(u => u.Id == select.Id).First();
+                cng.Name = cnguser.NameAdd;
+                cng.Birthday = cnguser.BirthAdd;
+                cng.ImageUrl = cnguser.ImgUrlAdd;
+                _context.SaveChanges();
+                DG_Load();
+            }
         }
 
         private void btnDeleteUser_Click(object sender, RoutedEventArgs e)

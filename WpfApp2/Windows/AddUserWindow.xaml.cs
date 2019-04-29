@@ -28,6 +28,7 @@ namespace WpfApp2.Windows
         public string ImgUrlAdd { get; set; } = @"\Images\NoImage.jpg";
         public AddUserWindow()
         {
+
             InitializeComponent();
             imgUser.Source = new BitmapImage(new Uri(ImgUrlAdd, UriKind.Relative));
         }
