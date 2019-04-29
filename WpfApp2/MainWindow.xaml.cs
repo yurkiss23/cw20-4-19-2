@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp2.Entities;
+using WpfApp2.Windows;
 
 namespace WpfApp2
 {
@@ -58,7 +59,8 @@ namespace WpfApp2
 
         private void btnAddUser_Click(object sender, RoutedEventArgs e)
         {
-
+            AddUserWindow adduser = new AddUserWindow();
+            adduser.ShowDialog();
         }
 
         private void btnChangeUser_Click(object sender, RoutedEventArgs e)

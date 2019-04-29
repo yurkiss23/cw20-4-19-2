@@ -1,0 +1,23 @@
+﻿<Window x:Class="WpfApp2.Windows.AddUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2.Windows"
+        mc:Ignorable="d"
+        Title="AddUserWindow" Height="450" Width="400">
+    <StackPanel>
+        <Label x:Name="lblName" Margin="0,10,0,5" Height="35" HorizontalAlignment="Center" FontSize="20">Ім'я:</Label>
+        <TextBox x:Name="txtName" Height="30" Width="200" HorizontalAlignment="Center"/>
+        <Label x:Name="lblBirthday" Margin="0,10,0,5" Height="35" HorizontalAlignment="Center" FontSize="20">
+            Дата народження:
+        </Label>
+        <DatePicker x:Name="txtbirthday" Height="30" Width="200" HorizontalAlignment="Center"/>
+        <Button x:Name="btnImg" Margin="0,10,0,5" Width="80"
+                HorizontalAlignment="Center" FontSize="20" Click="BtnFhoto_Click">
+            Фото:
+        </Button>
+        <TextBox x:Name="txtImg" Height="30" Width="200" HorizontalAlignment="Center"/>
+        <Image x:Name="imgUser" Margin="0,10" Width="120" Source="{Binding txtImg.Text}"></Image>
+    </StackPanel>
+</Window>
