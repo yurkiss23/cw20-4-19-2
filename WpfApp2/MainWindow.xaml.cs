@@ -61,6 +61,14 @@ namespace WpfApp2
         {
             AddUserWindow adduser = new AddUserWindow();
             adduser.ShowDialog();
+            _context.Users.Add(new EFUser()
+            {
+                Name = adduser.NameAdd,
+                Birthday = adduser.BirthAdd,
+                ImageUrl = adduser.ImgUrlAdd
+            });
+            _context.SaveChanges();
+            DG_Load();
         }
 
         private void btnChangeUser_Click(object sender, RoutedEventArgs e)
@@ -70,12 +78,24 @@ namespace WpfApp2
 
         private void btnDeleteUser_Click(object sender, RoutedEventArgs e)
         {
-
+            if (DG.SelectedItem != null)
+            {
+                EFUser select = DG.SelectedItem as User;
+                _context.Users.Remove(_context.Users.Where(u => u.Id == select.Id).First());
+                _context.SaveChanges();
+                DG_Load();
+            }
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void DG_Select(object sender, SelectionChangedEventArgs e)
+        {
+            btnChangeUser.IsEnabled = true;
+            btnDeleteUser.IsEnabled = true;
         }
     }
 

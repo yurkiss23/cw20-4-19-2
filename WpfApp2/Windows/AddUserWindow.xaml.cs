@@ -32,43 +32,28 @@ namespace WpfApp2.Windows
             imgUser.Source = new BitmapImage(new Uri(ImgUrlAdd, UriKind.Relative));
         }
 
-        //private void LblFhoto_Click(object sender, RoutedEventArgs e)
-        //{
-
-        //}
-
-        //private void BtnFhoto_Click(object sender, RoutedEventArgs e)
-        //{
-
-        //}
-
         private void BtnImg_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             if (ofd.ShowDialog() == true)
             {
-                MessageBox.Show("if");
                 txtImg.Text = ofd.FileName;
                 _imgUser = new FileInfo(txtImg.Text);
                 _imgUser.CopyTo($@"C:\Users\Public\Pictures\{txtName.Text}.jpg");
                 ImgUrlAdd = ConfigurationManager.AppSettings["img"] + txtName.Text + ".jpg";
             }
-            imgUser.Source = new BitmapImage(new Uri(ImgUrlAdd, UriKind.RelativeOrAbsolute));
+            imgUser.Source = new BitmapImage(new Uri(ImgUrlAdd));
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             NameAdd = txtName.Text;
-            BirthAdd = dpbirthday.DisplayDate;
+            BirthAdd = (DateTime)dpbirthday.SelectedDate;
             this.Close();
         }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
-            NameAdd = null;
-
-            //BirthAdd = dpbirthday.DisplayDate;
-            ImgUrlAdd = null;
             this.Close();
         }
 
@@ -78,6 +63,12 @@ namespace WpfApp2.Windows
             btnImg.IsEnabled = true;
             txtImg.IsEnabled = true;
             btnAdd.IsEnabled = true;
+        }
+
+        private void inputUrl(object sender, RoutedEventArgs e)
+        {
+            ImgUrlAdd = txtImg.Text;
+            imgUser.Source = new BitmapImage(new Uri(ImgUrlAdd));
         }
     }
 }

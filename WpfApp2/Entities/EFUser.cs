@@ -19,5 +19,16 @@ namespace WpfApp2.Entities
         public DateTime Birthday { get; set; }
         [Required, StringLength(maximumLength: 150)]
         public string ImageUrl { get; set; }
+
+        public static implicit operator EFUser(User u)
+        {
+            return new EFUser
+            {
+                Id = u.Id,
+                Name = u.Name,
+                Birthday = u.Birthday,
+                ImageUrl = u.ImageUrl
+            };
+        }
     }
 }
